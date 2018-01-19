@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { RestProvider } from '../../providers/rest/rest';
+import { DetailPage } from '../detail/detail';
 
 @Component({
   selector: 'page-home',
@@ -24,6 +25,13 @@ export class HomePage {
        .subscribe(
          countries => this.countries = countries,
          error =>  this.errorMessage = <any>error);
+  }
+    
+  itemTapped(event, item) {
+    // That's right, we're pushing to ourselves!
+    this.navCtrl.push(DetailPage, {
+      item: item
+    });
   }
 
 }
